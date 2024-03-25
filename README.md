@@ -13,7 +13,7 @@
 
 - **Jumper Reset:** Modificare un jumper sulla scheda madre per ripristinare le impostazioni del BIOS collegando pin specifici.
 
-![cmos](https://github.com/GabrieleDattile/Reset-Password-BIOS/assets/137740496/75986522-c9cf-41c8-9975-d6e449ec95c1)
+  ![cmos](https://github.com/GabrieleDattile/Reset-Password-BIOS/assets/137740496/75986522-c9cf-41c8-9975-d6e449ec95c1)
 
 ### Metodi Software:
 
