@@ -20,7 +20,7 @@ Per i sistemi moderni che utilizzano UEFI invece del BIOS tradizionale, lo strum
 
 ## Analisi della RAM e Attacchi Cold Boot
 
-La RAM conserva i dati brevemente dopo l'interruzione dell'alimentazione, di solito per 1 o 2 minuti. Questa persistenza può essere estesa a 10 minuti applicando sostanze fredde, come azoto liquido. Durante questo periodo esteso, è possibile creare un dump di memoria utilizzando strumenti come [dd.exe](https://en.wikipedia.org/wiki/Dd_(Unix)) e [Volatility](https://www.volatilityfoundation.org/).
+La RAM conserva i dati brevemente dopo l'interruzione dell'alimentazione, di solito per 1 o 2 minuti. Questa persistenza può essere estesa a 10 minuti applicando sostanze fredde, come azoto liquido. Durante questo periodo esteso, è possibile creare un dump di memoria utilizzando strumenti come [dd.exe](https://uranus.chrysocome.net/linux/rawwrite/dd-old.htm) e [Volatility](https://volatilityfoundation.org/about-volatility/).
 
 ## Attacchi di Accesso Diretto alla Memoria (DMA)
 
@@ -28,9 +28,9 @@ La RAM conserva i dati brevemente dopo l'interruzione dell'alimentazione, di sol
 
 ## Accesso al Sistema tramite Live CD/USB
 
-La modifica dei binari di sistema come sethc.exe o Utilman.exe con una copia di cmd.exe può fornire un prompt dei comandi con privilegi di sistema. Strumenti come [chntpw](https://github.com/samratashok/nishang/blob/master/Gather/Invoke-WCMDump.ps1) possono essere utilizzati per modificare il file SAM di un'installazione di Windows, consentendo la modifica delle password.
+La modifica dei binari di sistema come sethc.exe o Utilman.exe con una copia di cmd.exe può fornire un prompt dei comandi con privilegi di sistema. Strumenti come [chntpw](https://www.kali.org/tools/chntpw/) possono essere utilizzati per modificare il file SAM di un'installazione di Windows, consentendo la modifica delle password.
 
-[Kon-Boot](https://www.raymond.cc) è uno strumento che facilita l'accesso ai sistemi Windows senza conoscere la password modificando temporaneamente il kernel di Windows o UEFI.
+[Kon-Boot](https://whatsoftware.com/login-to-windows-administrator-and-linux-root-account-without-knowing-or-changing-current-password/) è uno strumento che facilita l'accesso ai sistemi Windows senza conoscere la password modificando temporaneamente il kernel di Windows o UEFI.
 
 ## Gestione delle Funzionalità di Sicurezza di Windows
 
