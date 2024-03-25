@@ -5,9 +5,14 @@
 ### Metodi Hardware:
 
 - **Rimozione della Batteria:** Rimuovere la batteria della scheda madre per circa 30 minuti reimposta le impostazioni del BIOS, inclusa la password.
+
+  
   ![remove-battery](https://github.com/GabrieleDattile/Reset-Password-BIOS/assets/137740496/98ca02e9-b249-45ae-9f5e-e19465d13712)
 
+
+
 - **Jumper Reset:** Modificare un jumper sulla scheda madre per ripristinare le impostazioni del BIOS collegando pin specifici.
+
 ![cmos](https://github.com/GabrieleDattile/Reset-Password-BIOS/assets/137740496/75986522-c9cf-41c8-9975-d6e449ec95c1)
 
 ### Metodi Software:
