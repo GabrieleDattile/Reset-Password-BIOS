@@ -1,31 +1,53 @@
-# Guida al Reset della Password del BIOS
+# Recupero della Password del BIOS e Sicurezza del Sistema
 
-Questa guida fornisce informazioni su come eseguire il reset della password del BIOS su un computer.
+## Recupero della Password del BIOS
 
-## Metodi Hardware:
+### Metodi Hardware:
 
-1. **Rimozione della Batteria:** 
-   - Rimuovere la batteria della scheda madre per circa 30 minuti.
-   - Questo ripristinerà le impostazioni del BIOS, inclusa la password.
+- **Rimozione della Batteria:** Rimuovere la batteria della scheda madre per circa 30 minuti reimposta le impostazioni del BIOS, inclusa la password.
+  
+- **Jumper Reset:** Modificare un jumper sulla scheda madre per ripristinare le impostazioni del BIOS collegando pin specifici.
 
-2. **Modifica del Jumper:**
-   - Modificare il jumper sulla scheda madre per ripristinare le impostazioni.
-   - Questo coinvolge il collegamento di pin specifici, consultare il manuale della scheda madre per istruzioni dettagliate.
+### Metodi Software:
 
-## Soluzioni Software:
+- **Live CD/USB:** Utilizzare distribuzioni come Kali Linux per accedere a strumenti come [killCmos](https://www.majorgeeks.com/files/details/killcmos.html) e [CmosPWD](https://www.cgsecurity.org/wiki/CmosPwd) per il recupero della password del BIOS.
 
-1. **Utilizzo di Live CD/USB:**
-   - Avviare il sistema da un Live CD/USB con distribuzioni come Kali Linux.
-   - Strumenti come killCmos e CmosPWD possono essere utilizzati per il recupero della password del BIOS.
+- **Utilizzo di Codici di Errore:** Inserire la password del BIOS in modo errato tre volte genera un codice di errore che può essere utilizzato per recuperare la password su siti web specializzati come [BIOS Password Recovery](https://bios-pw.org).
 
-## Recupero della Password Sconosciuta:
+## Sicurezza UEFI
 
-- Se la password del BIOS è sconosciuta, inserirla in modo errato tre volte solitamente genera un codice di errore.
-- Utilizzare questo codice su siti web come [bios-pw.org](https://bios-pw.org) per potenzialmente recuperare una password utilizzabile.
+Per i sistemi moderni che utilizzano UEFI invece del BIOS tradizionale, lo strumento [chipsec](https://github.com/chipsec/chipsec) può essere utilizzato per analizzare e modificare le impostazioni UEFI, inclusa la disabilitazione del Secure Boot.
 
-## Avvertenze:
+## Analisi della RAM e Attacchi Cold Boot
 
-- Il reset della password del BIOS potrebbe comportare la perdita di altre impostazioni personalizzate.
-- Prima di eseguire qualsiasi procedura, assicurarsi di consultare il manuale del dispositivo o cercare assistenza professionale.
+La RAM conserva i dati brevemente dopo l'interruzione dell'alimentazione, di solito per 1 o 2 minuti. Questa persistenza può essere estesa a 10 minuti applicando sostanze fredde, come azoto liquido. Durante questo periodo esteso, è possibile creare un dump di memoria utilizzando strumenti come [dd.exe](https://en.wikipedia.org/wiki/Dd_(Unix)) e [Volatility](https://www.volatilityfoundation.org/).
 
+## Attacchi di Accesso Diretto alla Memoria (DMA)
+
+[INCEPTION](https://github.com/carmaa/inception) è uno strumento progettato per la manipolazione fisica della memoria tramite DMA, compatibile con interfacce come FireWire e Thunderbolt. Consente di bypassare le procedure di accesso effettuando una patch alla memoria per accettare qualsiasi password. Tuttavia, non è efficace contro i sistemi Windows 10.
+
+## Accesso al Sistema tramite Live CD/USB
+
+La modifica dei binari di sistema come sethc.exe o Utilman.exe con una copia di cmd.exe può fornire un prompt dei comandi con privilegi di sistema. Strumenti come [chntpw](https://github.com/samratashok/nishang/blob/master/Gather/Invoke-WCMDump.ps1) possono essere utilizzati per modificare il file SAM di un'installazione di Windows, consentendo la modifica delle password.
+
+[Kon-Boot](https://www.raymond.cc) è uno strumento che facilita l'accesso ai sistemi Windows senza conoscere la password modificando temporaneamente il kernel di Windows o UEFI.
+
+## Gestione delle Funzionalità di Sicurezza di Windows
+
+- **Scorciatoie di Avvio e Ripristino:**
+  - `Supr`: Accedere alle impostazioni del BIOS.
+  - `F8`: Accedere alla modalità di ripristino.
+  - Premere `Shift` dopo il banner di Windows può bypassare l'autologon.
+
+- **Dispositivi BAD USB:**
+  - Dispositivi come Rubber Ducky e Teensyduino fungono da piattaforme per la creazione di dispositivi USB malevoli, in grado di eseguire payload predefiniti quando collegati a un computer di destinazione.
+
+- **Copia Shadow del Volume:**
+  - I privilegi di amministratore consentono la creazione di copie di file sensibili, inclusi il file SAM, tramite PowerShell.
+
+- **Bypass dell'encryption BitLocker:**
+  - L'encryption BitLocker può essere bypassata se la password di ripristino viene trovata all'interno di un file di dump di memoria (MEMORY.DMP). Strumenti come Elcomsoft Forensic Disk Decryptor o Passware Kit Forensic possono essere utilizzati per questo scopo.
+
+- **Ingegneria Sociale per l'Aggiunta di una Chiave di Ripristino:**
+  - Una nuova chiave di ripristino di BitLocker può essere aggiunta tramite tattiche di ingegneria sociale, convincendo un utente ad eseguire un comando che aggiunge una nuova chiave di ripristino composta da zeri, semplificando così il processo di decrittazione.
 
