@@ -27,6 +27,9 @@ Per i sistemi moderni che utilizzano UEFI invece del BIOS tradizionale, lo strum
 
 ## Analisi della RAM e Attacchi Cold Boot
 
+![IMG_3285](https://github.com/GabrieleDattile/Reset-Password-BIOS/assets/137740496/f5a494d7-5509-43d6-a6e0-733a830ecf37)
+
+
 La RAM conserva i dati brevemente dopo l'interruzione dell'alimentazione, di solito per 1 o 2 minuti. Questa persistenza può essere estesa a 10 minuti applicando sostanze fredde, come azoto liquido. Durante questo periodo esteso, è possibile creare un dump di memoria utilizzando strumenti come [dd.exe](https://uranus.chrysocome.net/linux/rawwrite/dd-old.htm) e [Volatility](https://volatilityfoundation.org/about-volatility/).
 
 ## Attacchi di Accesso Diretto alla Memoria (DMA)
